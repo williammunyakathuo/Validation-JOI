@@ -10,7 +10,13 @@ const signupSchema = Joi.object({
     address :{
         state : Joi.string().length(2).required(),
     },
-    DOB : Joi.date().greater(new Date("2012-01-02")).required()
+    DOB : Joi.date().greater(new Date("2012-01-02")).required(),
+    refered : Joi.boolean().required(),
+    referalDetails : Joi.string().when("refered",{
+        is : true,
+        then :Joi.string().required().min(3).max(50),
+        otherwise: Joi.string().optional()
+    })
 });
 
 

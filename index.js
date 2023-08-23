@@ -12,7 +12,7 @@ app.post("/signup" , (req, res) =>{
     const {error, value} = validateSignup(req.body)
     if (error){
         console.log(error);
-        return res.send("invalid request ")
+        return res.send(error.details)
     }
     console.log(value)
     res.send("succesfully signed up",)
